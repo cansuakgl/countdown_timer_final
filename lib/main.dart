@@ -12,67 +12,12 @@ import 'package:latest_try_ct/handlers/timer_handler.dart';
 import 'package:latest_try_ct/theme.dart';
 import 'dart:math';
 
-void createSampleData() {
-  insertDay(Day(
-      dayId: 20250101,
-      dayNum: 01,
-      belongsToWeek: 1,
-      numOfMinutes: 200,
-      numOfTasks: 3));
-  insertDay(Day(
-      dayId: 20250102,
-      dayNum: 02,
-      belongsToWeek: 1,
-      numOfMinutes: 278,
-      numOfTasks: 3));
-  insertDay(Day(
-      dayId: 20250103,
-      dayNum: 03,
-      belongsToWeek: 1,
-      numOfMinutes: 136,
-      numOfTasks: 3));
-  insertDay(Day(
-      dayId: 20250104,
-      dayNum: 04,
-      belongsToWeek: 1,
-      numOfMinutes: 100,
-      numOfTasks: 2));
-  insertDay(Day(
-      dayId: 20250105,
-      dayNum: 05,
-      belongsToWeek: 1,
-      numOfMinutes: 189,
-      numOfTasks: 4));
-  insertDay(Day(
-      dayId: 20250106,
-      dayNum: 06,
-      belongsToWeek: 2,
-      numOfMinutes: 78,
-      numOfTasks: 6));
-  insertDay(Day(
-      dayId: 20250107,
-      dayNum: 07,
-      belongsToWeek: 2,
-      numOfMinutes: 134,
-      numOfTasks: 2));
-  insertWeek(
-      Week(weekId: 1, numOfMinutes: 390, numOfTasks: 0));
-  insertWeek(
-      Week(weekId: 2, numOfMinutes: 290, numOfTasks: 0));
-}
-
 void main() async {
   await WidgetsFlutterBinding.ensureInitialized();
-
-  createSampleData();
-
   await DbQuery().fetchLastFourWeeks();
   await DbQuery().fetchLastSevenDays();
 
   await CalendarHandler().setDate();
-
-  
-
   CalendarHandler().updateDateEveryMin();
   TimerHandler().startBackgroundTimer();
 
